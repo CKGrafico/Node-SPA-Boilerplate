@@ -1,0 +1,23 @@
+{
+  "name": "node-spa-boilerplate",
+  "version": "1.0.0",
+  "description": "A Boilerplate to work with Node and SPAs",
+  "scripts": {
+    "postinstall": "npm install ./server",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "node-spa-boilerplate-server": "file:server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CKGrafico/Node-SPA-Boilerplate.git"
+  },
+  "author": "Quique Fdez Guerra @CKGrafico",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CKGrafico/Node-SPA-Boilerplate/issues"
+  },
+  "homepage": "https://github.com/CKGrafico/Node-SPA-Boilerplate#readme"
+}
