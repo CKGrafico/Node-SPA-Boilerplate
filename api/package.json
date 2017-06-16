@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "Only for server libraries (because CD)",
   "dependencies": {
-    "express": "^4.15.3"
+    "body-parser": "1.17.2",
+    "glob": "7.1.2",
+    "express": "4.15.3"
   }
 }

@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "description": "A Boilerplate to work with Node and SPAs",
   "scripts": {
-    "postinstall": "npm install ./server",
+    "postinstall": "npm install ./api",
     "start": "node server.js"
   },
   "dependencies": {
-    "gulp": "^3.9.1",
-    "node-spa-boilerplate-server": "file:server"
+    "gulp": "3.9.1",
+    "node-spa-boilerplate-server": "file:api"
   },
   "repository": {
     "type": "git",
