@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Require our routers
-let modules = glob.sync('./api/**/*.router.*');
+let modules = glob.sync(`${__dirname}/api/**/*.router.*`);
 modules.forEach(_module => require(_module)(app));
 
 // Start the server
