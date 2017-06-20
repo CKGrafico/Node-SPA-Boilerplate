@@ -1,5 +1,6 @@
 const glob = require('glob');
 const express = require('express');
+const bodyParser = require('body-parser');
 const config = require('./config');
 
 // Create server
