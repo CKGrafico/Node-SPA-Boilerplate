@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Require our routers
 let modules = glob.sync('./api/**/*.router.*');
-modules.forEach(_module => require(_module)(server));
+modules.forEach(_module => require(_module)(app));
 
 // Start the server
 app.listen(config.port, () => {
