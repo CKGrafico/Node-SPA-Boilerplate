@@ -1,5 +1,10 @@
+const randomsService = require('./randoms.service');
+
+const MAX = 100;
+
 let get = (req, res) => {
-    res.send(Math.random() + '');
+    let random = randomsService.create(MAX);
+    res.send({value: random});
 };
 
 module.exports = {
