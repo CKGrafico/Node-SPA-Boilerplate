@@ -1,10 +1,12 @@
 const MAX = 100;
 
 class RandomsController {
-    get(req, res) {
-        let randomsService = res.container.get(res.identifiers.RandomsService);
+    constructor(randomsService) {
+        this.randomsService = randomsService;
+    }
 
-        let random = randomsService.create(MAX);
+    get(req, res) {
+        let random = this.randomsService.create(MAX);
         res.send({value: random});
     }
 }

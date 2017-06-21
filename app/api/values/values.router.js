@@ -1,10 +1,9 @@
-const ValuesController = require('./values.controller');
-
 const routes = {
     value: '/api/values/:value'
 };
 
-module.exports = app => {
-    let controller = new ValuesController();
-    app.get(routes.value, controller.getValue);
+module.exports = (app, ioc) => {
+    let controller = ioc.container.get(ioc.identifiers.ValuesController);
+
+    app.get(routes.value, (req, res) => controller.getValue(req, res));
 };

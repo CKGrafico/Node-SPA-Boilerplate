@@ -1,10 +1,9 @@
-const RandomsController = require('./randoms.controller');
-
 const routes = {
     base: '/api/randoms'
 };
 
-module.exports = app => {
-    let controller = new RandomsController();
-    app.get(routes.base, controller.get);
+module.exports = (app, ioc) => {
+    let controller = ioc.container.get(ioc.identifiers.RandomsController);
+
+    app.get(routes.base, (req, res) => controller.get(req, res));
 };

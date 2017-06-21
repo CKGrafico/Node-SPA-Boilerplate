@@ -1,5 +1,4 @@
 class RandomsService {
-
     constructor(randomizerService) {
         this.randomizerService = randomizerService;
     }
