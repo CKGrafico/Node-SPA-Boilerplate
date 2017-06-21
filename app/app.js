@@ -2,7 +2,7 @@ const glob = require('glob');
 const express = require('express');
 const bodyParser = require('body-parser');
 const config = require('./config');
-const a = require('./app.container');
+const ioc = require('./app.container');
 
 // Create server
 let app = express();
@@ -10,6 +10,13 @@ let app = express();
 // Configure bodyparser to access to data on POST
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// Add ioc container
+app.use((req, res, next) => {
+  res.container = ioc.container;
+  res.identifiers = ioc.identifiers;
+  next();
+});
 
 // Require our routers
 let modules = glob.sync(`${__dirname}/api/**/*.router.*`);

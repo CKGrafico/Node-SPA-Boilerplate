@@ -1,8 +1,11 @@
-const randomizerService = require('./randomizer.service');
-
 class RandomsService {
+
+    constructor(randomizerService) {
+        this.randomizerService = randomizerService;
+    }
+
     create(max) {
-        return randomizerService.random(1, max);
+        return this.randomizerService.random(1, max);
     }
 }
 
