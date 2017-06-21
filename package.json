@@ -4,10 +4,10 @@
   "description": "A Boilerplate to work with Node and SPAs",
   "scripts": {
     "postinstall": "npm install ./app",
-    "start": "node server.js"
+    "start": "node app/app.js",
+    "test": "node tests.js"
   },
   "dependencies": {
-    "gulp": "3.9.1",
     "node-spa-boilerplate-server": "file:app"
   },
   "repository": {
@@ -19,5 +19,10 @@
   "bugs": {
     "url": "https://github.com/CKGrafico/Node-SPA-Boilerplate/issues"
   },
-  "homepage": "https://github.com/CKGrafico/Node-SPA-Boilerplate#readme"
+  "homepage": "https://github.com/CKGrafico/Node-SPA-Boilerplate#readme",
+  "devDependencies": {
+    "glob": "^7.1.2",
+    "gulp": "3.9.1",
+    "tape": "^4.6.3"
+  }
 }

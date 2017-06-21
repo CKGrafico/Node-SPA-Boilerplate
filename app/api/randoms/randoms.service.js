@@ -1,10 +1,15 @@
 class RandomsService {
     constructor(randomizerService) {
         this.randomizerService = randomizerService;
+        this.min = 1;
     }
 
     create(max) {
-        return this.randomizerService.random(1, max);
+        if (this.min > max) {
+            throw new Error(`The 'max' value must be bigger than ${this.min}.`);
+        }
+
+        return this.randomizerService.random(this.min, max);
     }
 }
 
