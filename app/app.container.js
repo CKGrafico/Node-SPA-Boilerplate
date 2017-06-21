@@ -2,44 +2,33 @@ require('reflect-metadata');
 const glob = require('glob');
 const inversify = require('inversify');
 
-// Require all services
-let services = {};
-let servicesIds = {};
+
+// Require all service
+let items = {};
+let ids = {};
 let modules = glob.sync(`${__dirname}/api/**/*.service.*`);
+modules.push(...glob.sync(`${__dirname}/api/**/*.controller.*`));
 modules.forEach(_module => {
-    const service = require(_module);
-    servicesIds[service.name] = Symbol(service.name);
-    services[service.name] = service;
-    inversify.decorate(inversify.injectable(), services[service.name]);
+    const item = require(_module);
+    ids[item.name] = Symbol(item.name);
+    items[item.name] = item;
+    inversify.decorate(inversify.injectable(), items[item.name]);
 });
 
-// Inject services dependencies
-inversify.decorate(inversify.inject(servicesIds.RandomizerService), services.RandomsService, 0);
+// Inject items dependencies
+inversify.decorate(inversify.inject(ids.RandomizerService), items.RandomsService, 0);
 
-// Bind services to container
+inversify.decorate(inversify.inject(ids.RandomsService), items.RandomsController, 0);
+
+// Bind to container
 let container = new inversify.Container();
-container.bind(servicesIds.RandomizerService).to(services.RandomizerService).inSingletonScope();
-container.bind(servicesIds.RandomsService).to(services.RandomsService).inSingletonScope();
+container.bind(ids.RandomizerService).to(items.RandomizerService).inSingletonScope();
+container.bind(ids.RandomsService).to(items.RandomsService).inSingletonScope();
 
-// Require all controllers
-let controllers = {};
-let controllersIds = {};
-modules = glob.sync(`${__dirname}/api/**/*.controller.*`);
-modules.forEach(_module => {
-    const controller = require(_module);
-    controllersIds[controller.name] = Symbol(controller.name);
-    controllers[controller.name] = controller;
-    inversify.decorate(inversify.injectable(), controllers[controller.name]);
-});
-
-// Inject controllers dependencies
-inversify.decorate(inversify.inject(servicesIds.RandomsService), controllers.RandomsController, 0);
-
-// Bind controllers to container
-container.bind(controllersIds.RandomsController).to(controllers.RandomsController).inTransientScope();
-container.bind(controllersIds.ValuesController).to(controllers.ValuesController).inTransientScope();
+container.bind(ids.RandomsController).to(items.RandomsController).inTransientScope();
+container.bind(ids.ValuesController).to(items.ValuesController).inTransientScope();
 
 module.exports = {
     container: container,
-    identifiers: controllersIds
+    identifiers: ids
 };
