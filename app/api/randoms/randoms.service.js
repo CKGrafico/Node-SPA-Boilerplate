@@ -6,4 +6,4 @@ class RandomsService {
     }
 }
 
-module.exports = new RandomsService();
+module.exports = RandomsService;

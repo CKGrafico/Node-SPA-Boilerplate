@@ -5,6 +5,8 @@
   "dependencies": {
     "body-parser": "1.17.2",
     "glob": "7.1.2",
-    "express": "4.15.3"
+    "express": "4.15.3",
+    "inversify": "4.1.1",
+    "reflect-metadata": "0.1.10"
   }
 }

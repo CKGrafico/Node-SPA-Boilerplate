@@ -4,4 +4,4 @@ class RandomizerService {
     }
 }
 
-module.exports = new RandomizerService();
+module.exports = RandomizerService;

@@ -2,6 +2,7 @@ const glob = require('glob');
 const express = require('express');
 const bodyParser = require('body-parser');
 const config = require('./config');
+const a = require('./app.container');
 
 // Create server
 let app = express();
