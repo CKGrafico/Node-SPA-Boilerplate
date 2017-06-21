@@ -11,9 +11,13 @@ let app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// Add the container to our app
+app.container = ioc.container;
+app.types = ioc.types;
+
 // Require our routers
 let modules = glob.sync(`${__dirname}/api/**/*.router.*`);
-modules.forEach(_module => require(_module)(app, ioc));
+modules.forEach(_module => require(_module)(app));
 
 // Start the server
 app.listen(config.port, () => {
